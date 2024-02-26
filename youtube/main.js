@@ -28,7 +28,7 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h3 class="card-title">
+              <h3 class="card-title video-title">
                 <a data-fancybox class="text-body text-decoration-none" href="${videoEmbed}/${videoItem.id.videoId}">${videoInfo.title}</a>
               </h3>
               <p class="card-text">${videoInfo.description}</p>
