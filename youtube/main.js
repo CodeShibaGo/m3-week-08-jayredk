@@ -5,14 +5,20 @@
 
   const searchForm = document.querySelector('#search');
   const videoList = document.querySelector('#videoList');
+  const pagination = document.querySelector('#pagination');
 
   let data = [];
+  let query = '';
 
 
   function getData(api) {
     return fetch(api)
             .then((res) => res.json())
             .then(res => res)
+  }
+
+  function getApiUrl(query, pageToken = '') {
+    return `${API_ENDPOINT}?part=snippet,id&type=video&key=${API_KEY}&q=${query}&pageToken=${pageToken}`;
   }
 
   function renderList(data) {
@@ -42,16 +48,51 @@
     videoList.innerHTML = str;
   }
 
+  function renderPagination(prevToken, nextToken) {
+    let str = '';
+
+    if (prevToken) {
+      str += `<li class="page-item"><a data-page="${prevToken}" class="page-link text-secondary" href="#">
+        <span class="material-symbols-outlined fs-6 align-middle">chevron_left</span>
+      </a></li>`
+    }
+
+    if (nextToken) {
+      str += `<li class="page-item"><a data-page="${nextToken}" class="page-link text-secondary" href="#">
+          <span class="material-symbols-outlined fs-6 align-middle">chevron_right</span>
+        </a></li>`
+    }
+
+    pagination.innerHTML = str;
+  }
+
+  function onPageChange() {
+    pagination.addEventListener('click', async (e) => {
+      const targetDom = e.target;
+      if (targetDom.nodeName === 'UL') return;
+
+      token = targetDom.closest('a').getAttribute('data-page');
+
+      const api = getApiUrl(query, token);
+      data = await getData(api);
+      renderList(data);
+      const { prevPageToken, nextPageToken } = data;
+      renderPagination(prevPageToken, nextPageToken)
+    })
+  }
+
   function onSearch() {
     searchForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const query = e.target[0].value;
-      if (query.trim() === '') return;
+      query = e.target[0].value.trim();
+      if (query === '') return;
 
-      const api = `${API_ENDPOINT}?part=snippet,id&type=video&key=${API_KEY}&q=${query}`;
+      const api = getApiUrl(query);
       data = await getData(api);
       renderList(data);
+      const { prevPageToken, nextPageToken } = data;
+      renderPagination(prevPageToken, nextPageToken)
     })
   }
 
@@ -62,6 +103,7 @@
   
   function bindEvent() {
     onSearch();
+    onPageChange()
   }
 
   function init() {
