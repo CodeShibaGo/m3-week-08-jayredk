@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Sign In</h1>
+    <form class="w-50" action="" method="post" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div class="mb-3">
+            <label for="username">Username</label>
+            <input id="username" class="form-control" name="username" type="text">
+        </div>
+
+        <div class="mb-3">
+            <label for="password">Password</label>
+            <input id="password" class="form-control" name="password" type="password">
+        </div>
+
+        <label for="remember">
+            Remember me
+            <input id="remember" type="checkbox" name="remember" value="True">
+        </label>
+
+        <p>
+            Forgot Your Password?
+            <a href="{{ url_for('reset_password_request')}}">Click to Reset It</a>
+        </p>
+
+        <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+
+        <button class="btn btn-primary btn-lg" type="submit">Sign In</button>
+        
+    </form>
+{% endblock %}
