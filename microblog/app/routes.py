@@ -2,6 +2,7 @@ from flask import render_template, flash, redirect, url_for, request, g
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_babel import _, get_locale
 import sqlalchemy as sa
+from langdetect import detect, LangDetectException
 from urllib.parse import urlsplit
 from datetime import datetime, timezone
 from app import app, db
@@ -24,7 +25,11 @@ def before_request():
 @login_required
 def index():
     if request.method == 'POST':
-        post = Post(body=request.form['post'], author=current_user)
+        try:
+            language = detect(request.form['post'])
+        except LangDetectException:
+            language = ''
+        post = Post(body=request.form['post'], author=current_user, language=language)
         db.session.add(post)
         db.session.commit()
         flash('Your post is now live!')
