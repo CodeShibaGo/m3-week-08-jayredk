@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 from app import app, db
 from app.models import User, Post
 from app.email import send_password_reset_email
+from app.translate import translate
 
 from sqlalchemy import text
 from werkzeug.security import generate_password_hash
@@ -218,3 +219,9 @@ def reset_password(token):
         flash('Your password has been reset')
         return redirect(url_for('login'))
     return render_template('reset_password.html', csrf_token=generate_csrf)
+
+@app.route('/translate', methods=['POST'])
+@login_required
+def translate_text():
+    data = request.get_json()
+    return { 'text': translate(data['text'], data['source_language'], data['dest_language'])}
