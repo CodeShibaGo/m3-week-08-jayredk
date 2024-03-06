@@ -1,18 +1,19 @@
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user
 from urllib.parse import urlsplit
-from app import app, db
+from app import db
 from app.models import User
+from app.auth import bp
 from app.auth.email import send_password_reset_email
 
 from sqlalchemy import text
 from werkzeug.security import generate_password_hash
 from flask_wtf.csrf import generate_csrf
 
-@app.route('/login', methods=['GET', 'POST'])
+@bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
     
     if request.method == 'POST':
         username = request.form['username']
@@ -21,25 +22,25 @@ def login():
 
         if user is None or not user.check_password(request.form['password']):
             flash('Invalid username or password')
-            return redirect(url_for('login'))
+            return redirect(url_for('auth.login'))
 
         login_user(user, remember=request.form.get('remember', False))
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page):
-            next_page = url_for('index')
+            next_page = url_for('main.index')
         return redirect(next_page)
 
     return render_template('auth/login.html', title='Sign In', csrf_token=generate_csrf)
 
-@app.route('/logout')
+@bp.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('main.index'))
 
-@app.route('/register', methods=['GET', 'POST'])
+@bp.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
     
     csrf_token = generate_csrf
 
@@ -49,7 +50,7 @@ def register():
 
         if (password != password2): 
             flash('password do not match')
-            return redirect(url_for('register'))
+            return redirect(url_for('auth.register'))
         
         user_info = {
             'username': request.form['username'],
@@ -65,14 +66,14 @@ def register():
         db.session.commit()
         
         flash('Congratulations, you are now a registered user!')
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
 
     return render_template('auth/register.html', title='Register', csrf_token=csrf_token)
 
-@app.route('/reset_password_request', methods=['GET', 'POST'])
+@bp.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
 
     if request.method == 'POST':
         email = request.form['email']
@@ -81,21 +82,21 @@ def reset_password_request():
         if user:
             send_password_reset_email(user)
         flash('Check your email for the instructions to reset your password')
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
     return render_template('auth/reset_password_request.html', title='Reset Password', csrf_token=generate_csrf)
 
-@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+@bp.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
     user = User.verify_reset_password_token(token)
     if not user:
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
 
     if request.method == 'POST':
         password = request.form['password']
         user.set_password(password)
         db.session.commit()
         flash('Your password has been reset')
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
     return render_template('auth/reset_password.html', csrf_token=generate_csrf)
