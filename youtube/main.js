@@ -1,6 +1,6 @@
 (() => {
   const API_ENDPOINT = 'https://www.googleapis.com/youtube/v3/search';
-  const API_KEY = 'AIzaSyDUQUDfpg_6iA_ycnD5yaAYLSPc495aa8w';
+  const API_KEY = 'AIzaSyCw0c9PN_cbgdcDh9D-zqzr3n_Bcj2KeRc';
   const videoEmbed = 'https://www.youtube.com/embed';
 
   const searchForm = document.querySelector('#search');
