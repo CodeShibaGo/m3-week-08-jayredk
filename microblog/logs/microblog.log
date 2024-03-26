@@ -1,0 +1,44 @@
+2024-02-24 21:37:33,413 ERROR: Exception on /reset_password/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNldF9wYXNzd29yZCI6MiwiZXhwIjoxNzA4NzgyMDk4LjQwNTc2Mn0.qeOuNSmAFl5aNk2nHusTAE2eGRGBalFWydwRCjMIW1c [GET] [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py:828]
+Traceback (most recent call last):
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/routes.py", line 214, in reset_password
+    return render_template('reset_password.html', form=form)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/templates/reset_password.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/templates/base.html", line 50, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/templates/reset_password.html", line 21, in block 'content'
+    <p>{{ fomr.submit() }}</p>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'fomr' is undefined
+2024-02-24 21:37:55,272 INFO: Microblog startup [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/__init__.py:45]
+2024-02-24 21:38:57,834 INFO: Microblog startup [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/__init__.py:45]
+2024-02-24 21:39:38,208 INFO: Microblog startup [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/__init__.py:45]
+2024-02-25 00:42:50,674 INFO: Microblog startup [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/__init__.py:45]
+2024-02-25 00:46:48,675 INFO: Microblog startup [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/__init__.py:45]

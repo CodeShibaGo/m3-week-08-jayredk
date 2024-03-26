@@ -1,0 +1,111 @@
+2024-02-24 21:17:20,948 ERROR: Exception on /reset_password_request [POST] [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py:828]
+Traceback (most recent call last):
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/wtforms/validators.py", line 401, in __call__
+    import email_validator
+ModuleNotFoundError: No module named 'email_validator'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/routes.py", line 190, in reset_password_request
+    if form.validate_on_submit():
+       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask_wtf/form.py", line 86, in validate_on_submit
+    return self.is_submitted() and self.validate(extra_validators=extra_validators)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/wtforms/form.py", line 329, in validate
+    return super().validate(extra)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/wtforms/form.py", line 146, in validate
+    if not field.validate(self, extra):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/wtforms/fields/core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/wtforms/fields/core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/wtforms/validators.py", line 403, in __call__
+    raise Exception(
+Exception: Install 'email_validator' for email validation support.
+2024-02-24 21:18:01,674 INFO: Microblog startup [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/__init__.py:45]
+2024-02-24 21:18:06,494 ERROR: Exception on /reset_password_request [POST] [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py:828]
+Traceback (most recent call last):
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/routes.py", line 193, in reset_password_request
+    send_password_reset_email(user)
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/email.py", line 11, in send_password_reset_email
+    token = user.get_reset_password_token()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/models.py", line 91, in get_reset_password_token
+    return jwt.encode({
+           ^^^
+NameError: name 'jwt' is not defined
+2024-02-24 21:19:08,335 ERROR: Exception on /reset_password_request [POST] [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py:828]
+Traceback (most recent call last):
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/routes.py", line 193, in reset_password_request
+    send_password_reset_email(user)
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/email.py", line 11, in send_password_reset_email
+    token = user.get_reset_password_token()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/models.py", line 91, in get_reset_password_token
+NameError: name 'jwt' is not defined
+2024-02-24 21:19:14,757 INFO: Microblog startup [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/__init__.py:45]
+2024-02-24 21:19:19,130 ERROR: Exception on /reset_password_request [POST] [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py:828]
+Traceback (most recent call last):
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/routes.py", line 193, in reset_password_request
+    send_password_reset_email(user)
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/email.py", line 11, in send_password_reset_email
+    token = user.get_reset_password_token()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/models.py", line 95, in get_reset_password_token
+    }, app.config['SECRET_KEY'], algorithm='HS256')
+       ^^^
+NameError: name 'app' is not defined
+2024-02-24 21:19:35,514 INFO: Microblog startup [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/__init__.py:45]

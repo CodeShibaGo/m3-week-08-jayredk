@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Register</h1>
+    <form class="w-50" action="" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="mb-3">
+            <label for="username">Username</label>
+            <input id="username" class="form-control" type="text" name="username" pattern="\S.*\S" required >
+        </div>
+
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input id="email" class="form-control" type="email" name="email" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="password">Password</label>
+            <input id="password" class="form-control" type="password" name="password" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="password2">Repeat Password</label>
+            <input id="password2" class="form-control" type="password" name="password2" required>
+        </div>
+
+        <button class="btn btn-primary btn-lg" type="submit">Register</button>
+    </form>
+{% endblock %}

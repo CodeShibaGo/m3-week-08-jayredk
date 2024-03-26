@@ -1,0 +1,114 @@
+2024-02-14 22:57:59,624 INFO: Microblog startup [in /Users/jay/Desktop/project/mento-camp/m3-week-06-jayredk/microblog/app/__init__.py:43]
+2024-02-24 18:14:57,965 INFO: Microblog startup [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/__init__.py:45]
+2024-02-24 18:18:00,513 INFO: Microblog startup [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/__init__.py:45]
+2024-02-24 18:18:44,431 INFO: Microblog startup [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/__init__.py:45]
+2024-02-24 18:18:51,163 ERROR: Exception on /login [POST] [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py:828]
+Traceback (most recent call last):
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: hello
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/routes.py", line 63, in login
+    user = db.session.query(User).from_statement(sql_query).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2725, in first
+    return self._iter().first()  # type: ignore
+           ^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2826, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2306, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2191, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1408, in execute
+    return meth(
+           ^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 513, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1630, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1839, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1979, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2335, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: hello
+[SQL: SELECT * FROM user where username=hello]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-02-24 18:24:59,083 INFO: Microblog startup [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/__init__.py:45]
+2024-02-24 18:39:07,765 INFO: Microblog startup [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/__init__.py:45]
+2024-02-24 18:39:10,521 ERROR: Exception on /login [GET] [in /Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py:828]
+Traceback (most recent call last):
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/routes.py", line 75, in login
+    return render_template('login.html', title='Sign In', csrf_token=generate_csrf)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/templates/login.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/templates/base.html", line 50, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/microblog/app/templates/login.html", line 25, in block 'content'
+    <a href="{{ url_for('reset_password_request' )}}">Click to Reset It</a>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 1074, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/flask/app.py", line 1063, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jay/Desktop/project/mento-camp/m3-week-07-jayredk/.venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'reset_password_request'. Did you mean 'edit_profile' instead?
