@@ -11,8 +11,19 @@
   async function getRate(rateType = 'TWD') {
     const api = `${API_ENDPOINT}/${rateType}`;
 
-    rate = await fetch(api)
-            .then((res) => res.json());
+    try {
+      const res = await fetch(api);
+
+      if (!res.ok) {
+        throw new Error(`Failed to fetch data from ${api}: ${res.status} ${res.statusText}`);
+      }
+
+      rate = await res.json();
+      
+    } catch (error) {
+      console.error('Error occurred while fetching data:', error);
+      throw error;
+    }
   }
 
   function renderSelectOptions(ratesObj) {
