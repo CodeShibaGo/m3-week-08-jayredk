@@ -11,10 +11,20 @@
   let query = '';
 
 
-  function getData(api) {
-    return fetch(api)
-            .then((res) => res.json())
-            .then(res => res)
+  async function getData(api) {
+    try {
+      const res = await fetch(api);
+
+      if (!res.ok) {
+        throw new Error(`Fail fetch data from ${api}: ${res.status} ${res.statusText}`);
+      }
+
+      return res.json();
+
+    } catch (error) {
+      console.error('Error occurred while fetching data:', error);
+      throw error;
+    }
   }
 
   function getApiUrl(query, pageToken = '') {
